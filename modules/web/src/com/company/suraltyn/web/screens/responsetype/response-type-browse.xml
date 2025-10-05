@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://responseTypeBrowse.caption"
+        focusComponent="responseTypesTable"
+        messagesPack="com.company.suraltyn.web.screens.responsetype">
+    <data readOnly="true">
+        <collection id="responseTypesDc"
+                    class="com.company.suraltyn.entity.ResponseType">
+            <view extends="_local"/>
+            <loader id="responseTypesDl">
+                <query>
+                    <![CDATA[select e from suraltyn$ResponseType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="responseTypesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="responseTypesTable"
+                dataLoader="responseTypesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="responseTypesTable"
+                    width="100%"
+                    dataContainer="responseTypesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="responseTypesTable.create"/>
+                <button id="editBtn" action="responseTypesTable.edit"/>
+                <button id="removeBtn" action="responseTypesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

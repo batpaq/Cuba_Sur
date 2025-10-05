@@ -1,0 +1,2 @@
+alter table INCIDENT_FILES add constraint FK_INCFIL_ON_INCIDENTS foreign key (INCIDENTS_ID) references INCIDENTS(ID);
+alter table INCIDENT_FILES add constraint FK_INCFIL_ON_FILE_DESCRIPTOR foreign key (FILE_ENTITY_ID) references SYS_FILE(ID);

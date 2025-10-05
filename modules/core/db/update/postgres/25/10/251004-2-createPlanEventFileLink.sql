@@ -1,0 +1,2 @@
+alter table PLAN_EVENT_FILE_LINK add constraint FK_PLAEVEFIL_ON_PLAN_EVENT foreign key (PLAN_EVENT_ID) references PLAN_EVENT(ID);
+alter table PLAN_EVENT_FILE_LINK add constraint FK_PLAEVEFIL_ON_FILE_ENTITY foreign key (FILE_ENTITY_ID) references FILE_ENTITY(ID);

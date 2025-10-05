@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://complianceLawActBrowse.caption"
+        focusComponent="complianceLawActsTable"
+        messagesPack="com.company.suraltyn.web.screens.compliancelawact">
+    <data readOnly="true">
+        <collection id="complianceLawActsDc"
+                    class="com.company.suraltyn.entity.ComplianceLawAct">
+            <view extends="_local">
+                <property name="complianceLaw" view="_minimal"/>
+                <property name="act" view="_minimal"/>
+            </view>
+            <loader id="complianceLawActsDl">
+                <query>
+                    <![CDATA[select e from suraltyn$ComplianceLawAct e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="complianceLawActsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="complianceLawActsTable"
+                dataLoader="complianceLawActsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="complianceLawActsTable"
+                    width="100%"
+                    dataContainer="complianceLawActsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="complianceLaw"/>
+                <column id="act"/>
+                <column id="evaluation"/>
+                <column id="riskAssessment"/>
+                <column id="nonComplianceReason"/>
+                <column id="justification"/>
+                <column id="generalComment"/>
+                <column id="actionPlan"/>
+                <column id="dueDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="complianceLawActsTable.create"/>
+                <button id="editBtn" action="complianceLawActsTable.edit"/>
+                <button id="removeBtn" action="complianceLawActsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

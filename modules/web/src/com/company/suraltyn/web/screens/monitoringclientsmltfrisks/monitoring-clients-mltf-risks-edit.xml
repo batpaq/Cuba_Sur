@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://monitoringClientsMLTFRisksEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.monitoringclientsmltfrisks">
+    <data>
+        <instance id="monitoringClientsMLTFRisksDc"
+                  class="com.company.suraltyn.entity.MonitoringClientsMLTFRisks">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="monitoringClientsMLTFRisksDc">
+                <column width="350px">
+                    <textField id="numberField" property="number"/>
+                    <textField id="nameField" property="name"/>
+                    <textField id="initiatorField" property="initiator"/>
+                    <dateField id="deadlineDateField" property="deadlineDate"/>
+                    <textArea id="commentField" property="comment" rows="5"/>
+                    <textField id="totalClientsField" property="totalClients"/>
+                    <textField id="highRiskClientsCountField" property="highRiskClientsCount"/>
+                    <textField id="ipdlField" property="ipdl"/>
+                    <textField id="highRiskActivityClientsCountField" property="highRiskActivityClientsCount"/>
+                    <textField id="prohibitedActivityClientsCountField" property="prohibitedActivityClientsCount"/>
+                    <textField id="highCountryRiskClientsCountField" property="highCountryRiskClientsCount"/>
+                    <textField id="prohibitedCountryClientsCountField" property="prohibitedCountryClientsCount"/>
+                    <textField id="sanctionListClientsCountField" property="sanctionListClientsCount"/>
+                    <textField id="totalClientsForUpdateCountField" property="totalClientsForUpdateCount"/>
+                    <textField id="updatedClientsCountField" property="updatedClientsCount"/>
+                    <textField id="notUpdatedClientsCountField" property="notUpdatedClientsCount"/>
+                    <textArea id="notUpdatedReasonField" property="notUpdatedReason" rows="5"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

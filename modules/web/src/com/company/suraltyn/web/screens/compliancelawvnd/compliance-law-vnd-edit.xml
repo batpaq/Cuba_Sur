@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://complianceLawVndEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.compliancelawvnd">
+    <data>
+        <instance id="complianceLawVndDc"
+                  class="com.company.suraltyn.entity.ComplianceLawVnd">
+            <view extends="_local">
+                <property name="complianceLaw" view="_minimal"/>
+                <property name="vnd" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="complianceLawVndDc">
+            <column width="350px">
+                <pickerField id="complianceLawField" property="complianceLaw">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="vndField" property="vnd">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <lookupField id="vndMatchActsField" property="vndMatchActs"/>
+                <lookupField id="evaluationField" property="evaluation"/>
+                <textField id="riskAssessmentField" property="riskAssessment"/>
+                <textField id="nonComplianceReasonField" property="nonComplianceReason"/>
+                <textField id="justificationField" property="justification"/>
+                <textField id="generalCommentField" property="generalComment"/>
+                <textField id="actionPlanField" property="actionPlan"/>
+                <dateField id="dueDateField" property="dueDate"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

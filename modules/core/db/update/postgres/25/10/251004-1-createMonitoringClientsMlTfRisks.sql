@@ -1,0 +1,30 @@
+create table MONITORING_CLIENTS_ML_TF_RISKS (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NUMBER_ integer,
+    NAME varchar(255),
+    INITIATOR varchar(255) not null,
+    DEADLINE_DATE date,
+    COMMENT_ text,
+    TOTAL_CLIENTS integer,
+    HIGH_RISK_CLIENTS_COUNT integer not null,
+    IPDL integer not null,
+    HIGH_RISK_ACTIVITY_CLIENTS_COUNT integer not null,
+    PROHIBITED_ACTIVITY_CLIENTS_COUNT integer not null,
+    HIGH_COUNTRY_RISK_CLIENTS_COUNT integer not null,
+    PROHIBITED_COUNTRY_CLIENTS_COUNT integer not null,
+    SANCTION_LIST_CLIENTS_COUNT integer not null,
+    TOTAL_CLIENTS_FOR_UPDATE_COUNT integer not null,
+    UPDATED_CLIENTS_COUNT integer not null,
+    NOT_UPDATED_CLIENTS_COUNT integer not null,
+    NOT_UPDATED_REASON text,
+    --
+    primary key (ID)
+);

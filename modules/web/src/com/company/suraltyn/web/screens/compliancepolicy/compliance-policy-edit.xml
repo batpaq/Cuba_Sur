@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://compliancePolicyEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.compliancepolicy">
+    <data>
+        <instance id="compliancePolicyDc"
+                  class="com.company.suraltyn.entity.CompliancePolicy">
+            <view extends="_local">
+                <property name="department" view="_minimal"/>
+                <property name="requirements" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="requirementsDc" property="requirements"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="compliancePolicyDc">
+            <column width="350px">
+                <textField id="numberField" property="number"/>
+                <pickerField id="departmentField" property="department">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="initiatorField" property="initiator"/>
+                <textField id="commentField" property="comment"/>
+                <dateField id="dueDateField" property="dueDate"/>
+            </column>
+        </form>
+        <groupBox id="requirementsBox" caption="msg://com.company.suraltyn.entity/CompliancePolicy.requirements">
+            <table id="requirementsTable" dataContainer="requirementsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="requirementsTable.create"/>
+                    <button action="requirementsTable.edit"/>
+                    <button action="requirementsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

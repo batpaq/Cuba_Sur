@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://vndBrowse.caption"
+        focusComponent="vndsTable"
+        messagesPack="com.company.suraltyn.web.screens.vnd">
+    <data readOnly="true">
+        <collection id="vndsDc"
+                    class="com.company.suraltyn.entity.Vnd">
+            <view extends="_local"/>
+            <loader id="vndsDl">
+                <query>
+                    <![CDATA[select e from Vnd e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="vndsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="vndsTable"
+                dataLoader="vndsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="vndsTable"
+                    width="100%"
+                    dataContainer="vndsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="code"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="vndsTable.create"/>
+                <button id="editBtn" action="vndsTable.edit"/>
+                <button id="removeBtn" action="vndsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

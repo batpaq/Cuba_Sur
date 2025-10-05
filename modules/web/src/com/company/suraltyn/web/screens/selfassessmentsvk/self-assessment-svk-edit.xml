@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://selfAssessmentSVKEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.selfassessmentsvk">
+    <data>
+        <instance id="selfAssessmentSVKDc"
+                  class="com.company.suraltyn.entity.SelfAssessmentSVK">
+            <view extends="_local">
+                <property name="department" view="_minimal"/>
+                <property name="period" view="_minimal"/>
+                <property name="quarter" view="_minimal"/>
+                <property name="previousRating" view="_minimal"/>
+                <property name="currentRating" view="_minimal"/>
+                <property name="forecastRating" view="_minimal"/>
+                <property name="riskEvents" view="_minimal"/>
+                <property name="internalExternalFactors" view="_minimal"/>
+                <property name="policyProcedureAssessment" view="_minimal"/>
+                <property name="controlMeasureAssessment" view="_minimal"/>
+                <property name="internalControlMonitoring" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="riskEventsDc" property="riskEvents"/>
+            <collection id="internalExternalFactorsDc" property="internalExternalFactors"/>
+            <collection id="policyProcedureAssessmentDc" property="policyProcedureAssessment"/>
+            <collection id="controlMeasureAssessmentDc" property="controlMeasureAssessment"/>
+            <collection id="internalControlMonitoringDc" property="internalControlMonitoring"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="selfAssessmentSVKDc">
+                <column width="350px">
+                    <textField id="numberField" property="number"/>
+                    <pickerField id="departmentField" property="department">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="periodField" property="period">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textArea id="descriptionChangesField" property="descriptionChanges" rows="5"/>
+                    <pickerField id="quarterField" property="quarter">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="previousRatingField" property="previousRating">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="currentRatingField" property="currentRating">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="forecastRatingField" property="forecastRating">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textArea id="assessmentJustificationField" property="assessmentJustification" rows="5"/>
+                    <textArea id="influenceFactorsField" property="influenceFactors" rows="5"/>
+                    <textArea id="emergingRisksField" property="emergingRisks" rows="5"/>
+                    <textField id="managementField" property="management"/>
+                    <textField id="internalControllerField" property="internalController"/>
+                    <dateField id="fillDateField" property="fillDate"/>
+                    <textArea id="commentDKField" property="commentDK" rows="5"/>
+                </column>
+            </form>
+            <groupBox id="riskEventsBox" caption="msg://com.company.suraltyn.entity/SelfAssessmentSVK.riskEvents">
+                <table id="riskEventsTable" dataContainer="riskEventsDc" width="100%" height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="description"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="riskEventsTable.create"/>
+                        <button action="riskEventsTable.edit"/>
+                        <button action="riskEventsTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="internalExternalFactorsBox"
+                      caption="msg://com.company.suraltyn.entity/SelfAssessmentSVK.internalExternalFactors">
+                <table id="internalExternalFactorsTable" dataContainer="internalExternalFactorsDc" width="100%"
+                       height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="internalFactor"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="internalExternalFactorsTable.create"/>
+                        <button action="internalExternalFactorsTable.edit"/>
+                        <button action="internalExternalFactorsTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="policyProcedureAssessmentBox"
+                      caption="msg://com.company.suraltyn.entity/SelfAssessmentSVK.policyProcedureAssessment">
+                <table id="policyProcedureAssessmentTable" dataContainer="policyProcedureAssessmentDc" width="100%"
+                       height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="policyCompliance"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="policyProcedureAssessmentTable.create"/>
+                        <button action="policyProcedureAssessmentTable.edit"/>
+                        <button action="policyProcedureAssessmentTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="controlMeasureAssessmentBox"
+                      caption="msg://com.company.suraltyn.entity/SelfAssessmentSVK.controlMeasureAssessment">
+                <table id="controlMeasureAssessmentTable" dataContainer="controlMeasureAssessmentDc" width="100%"
+                       height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="number"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="controlMeasureAssessmentTable.create"/>
+                        <button action="controlMeasureAssessmentTable.edit"/>
+                        <button action="controlMeasureAssessmentTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="internalControlMonitoringBox"
+                      caption="msg://com.company.suraltyn.entity/SelfAssessmentSVK.internalControlMonitoring">
+                <table id="internalControlMonitoringTable" dataContainer="internalControlMonitoringDc" width="100%"
+                       height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="description"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="internalControlMonitoringTable.create"/>
+                        <button action="internalControlMonitoringTable.edit"/>
+                        <button action="internalControlMonitoringTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

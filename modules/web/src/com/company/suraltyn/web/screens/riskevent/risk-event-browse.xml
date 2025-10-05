@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://riskEventBrowse.caption"
+        focusComponent="riskEventsTable"
+        messagesPack="com.company.suraltyn.web.screens.riskevent">
+    <data readOnly="true">
+        <collection id="riskEventsDc"
+                    class="com.company.suraltyn.entity.RiskEvent">
+            <view extends="_local">
+                <property name="selfAssessmentSVK" view="_minimal"/>
+                <property name="activity" view="_minimal"/>
+            </view>
+            <loader id="riskEventsDl">
+                <query>
+                    <![CDATA[select e from RiskEvent e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="riskEventsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="riskEventsTable"
+                dataLoader="riskEventsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="riskEventsTable"
+                    width="100%"
+                    dataContainer="riskEventsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="description"/>
+                <column id="impactDegree"/>
+                <column id="selfAssessmentSVK"/>
+                <column id="activity"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="riskEventsTable.create"/>
+                <button id="editBtn" action="riskEventsTable.edit"/>
+                <button id="removeBtn" action="riskEventsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

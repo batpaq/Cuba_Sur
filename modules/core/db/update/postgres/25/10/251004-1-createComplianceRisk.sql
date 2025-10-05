@@ -1,0 +1,31 @@
+create table COMPLIANCE_RISK (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NUMBER_ integer not null,
+    DEPARTMENT_ID uuid,
+    RISK_CATEGORY_ID uuid,
+    SHORT_DESCRIPTION text,
+    DETAILED_DESCRIPTION text,
+    SOURCE_ID uuid,
+    RATING_ID uuid,
+    PLAN_EVENT_ID uuid,
+    DETECTION_DATE timestamp,
+    PLANNED_CLOSE_DATE timestamp,
+    EXTENDED_DATE timestamp,
+    ACCEPTED_DATE timestamp,
+    FINAL_ACCEPTED_DATE timestamp,
+    CLOSED_DATE timestamp,
+    STATUS integer,
+    OWNER_ID uuid,
+    INITIATOR varchar(255),
+    COMMENT_ varchar(255),
+    --
+    primary key (ID)
+);

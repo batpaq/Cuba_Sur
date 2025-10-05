@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://conflictOfInterestBrowse.caption"
+        focusComponent="conflictOfInterestsTable"
+        messagesPack="com.company.suraltyn.web.screens.conflictofinterest">
+    <data readOnly="true">
+        <collection id="conflictOfInterestsDc"
+                    class="com.company.suraltyn.entity.ConflictOfInterest">
+            <view extends="_local">
+                <property name="planEvent" view="_minimal"/>
+                <property name="riskLevel" view="_minimal"/>
+            </view>
+            <loader id="conflictOfInterestsDl">
+                <query>
+                    <![CDATA[select e from ConflictOfInterest e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="conflictOfInterestsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="conflictOfInterestsTable"
+                dataLoader="conflictOfInterestsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="conflictOfInterestsTable"
+                    width="100%"
+                    dataContainer="conflictOfInterestsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="initiator"/>
+                <column id="comment"/>
+                <column id="dueDate"/>
+                <column id="conflictDescription"/>
+                <column id="planEvent"/>
+                <column id="planDueDate"/>
+                <column id="riskLevel"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="conflictOfInterestsTable.create"/>
+                <button id="editBtn" action="conflictOfInterestsTable.edit"/>
+                <button id="removeBtn" action="conflictOfInterestsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

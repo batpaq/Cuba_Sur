@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://controlMeasuresEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.controlmeasures">
+    <data>
+        <instance id="controlMeasuresDc"
+                  class="com.company.suraltyn.entity.ControlMeasures">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="controlMeasuresDc">
+            <column width="350px">
+                <textField id="codeField" property="code"/>
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://planEventEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.planevent">
+    <data>
+        <instance id="planEventDc"
+                  class="com.company.suraltyn.entity.PlanEvent">
+            <view extends="_local">
+                <property name="activities" view="_minimal"/>
+                <property name="files" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="activitiesDc" property="activities"/>
+            <collection id="filesDc" property="files"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="planEventDc">
+            <column width="350px">
+                <textField id="numberPmField" property="numberPm"/>
+                <textField id="nameField" property="name"/>
+                <dateField id="creationDateField" property="creationDate"/>
+                <textField id="statusField" property="status"/>
+                <textField id="entityNameField" property="entityName"/>
+                <dateField id="deadlineField" property="deadline"/>
+                <dateField id="newDeadlineField" property="newDeadline"/>
+            </column>
+        </form>
+        <groupBox id="activitiesBox" caption="msg://com.company.suraltyn.entity/PlanEvent.activities">
+            <table id="activitiesTable" dataContainer="activitiesDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="activitiesTable.create"/>
+                    <button action="activitiesTable.edit"/>
+                    <button action="activitiesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="filesBox" caption="msg://com.company.suraltyn.entity/PlanEvent.files">
+            <table id="filesTable" dataContainer="filesDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="fileName"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="filesTable.add"/>
+                    <button action="filesTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

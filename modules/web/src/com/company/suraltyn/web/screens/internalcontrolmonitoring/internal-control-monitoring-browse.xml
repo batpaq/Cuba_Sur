@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://internalControlMonitoringBrowse.caption"
+        focusComponent="internalControlMonitoringsTable"
+        messagesPack="com.company.suraltyn.web.screens.internalcontrolmonitoring">
+    <data readOnly="true">
+        <collection id="internalControlMonitoringsDc"
+                    class="com.company.suraltyn.entity.InternalControlMonitoring">
+            <view extends="_local">
+                <property name="responsibleUser" view="_minimal"/>
+                <property name="selfAssessmentSVK" view="_minimal"/>
+            </view>
+            <loader id="internalControlMonitoringsDl">
+                <query>
+                    <![CDATA[select e from InternalControlMonitoring e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="internalControlMonitoringsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="internalControlMonitoringsTable"
+                dataLoader="internalControlMonitoringsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="internalControlMonitoringsTable"
+                    width="100%"
+                    dataContainer="internalControlMonitoringsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="description"/>
+                <column id="necessityStatus"/>
+                <column id="responsibleUser"/>
+                <column id="dueDate"/>
+                <column id="comments"/>
+                <column id="selfAssessmentSVK"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="internalControlMonitoringsTable.create"/>
+                <button id="editBtn" action="internalControlMonitoringsTable.edit"/>
+                <button id="removeBtn" action="internalControlMonitoringsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

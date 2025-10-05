@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://policyProcedureAssessmentBrowse.caption"
+        focusComponent="policyProcedureAssessmentsTable"
+        messagesPack="com.company.suraltyn.web.screens.policyprocedureassessment">
+    <data readOnly="true">
+        <collection id="policyProcedureAssessmentsDc"
+                    class="com.company.suraltyn.entity.PolicyProcedureAssessment">
+            <view extends="_local">
+                <property name="measurePlan" view="_minimal"/>
+                <property name="responsibleExecutor" view="_minimal"/>
+                <property name="selfAssessmentSVK" view="_minimal"/>
+            </view>
+            <loader id="policyProcedureAssessmentsDl">
+                <query>
+                    <![CDATA[select e from PolicyProcedureAssessment e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="policyProcedureAssessmentsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="policyProcedureAssessmentsTable"
+                dataLoader="policyProcedureAssessmentsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="policyProcedureAssessmentsTable"
+                    width="100%"
+                    dataContainer="policyProcedureAssessmentsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="policyCompliance"/>
+                <column id="controlSystemUpdate"/>
+                <column id="measurePlan"/>
+                <column id="responsibleExecutor"/>
+                <column id="deadline"/>
+                <column id="selfAssessmentSVK"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="policyProcedureAssessmentsTable.create"/>
+                <button id="editBtn" action="policyProcedureAssessmentsTable.edit"/>
+                <button id="removeBtn" action="policyProcedureAssessmentsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://complianceRiskEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.compliancerisk">
+    <data>
+        <instance id="complianceRiskDc"
+                  class="com.company.suraltyn.entity.ComplianceRisk">
+            <view extends="_local">
+                <property name="department" view="_minimal"/>
+                <property name="riskCategory" view="_minimal"/>
+                <property name="source" view="_minimal"/>
+                <property name="rating" view="_minimal"/>
+                <property name="planEvent" view="_minimal"/>
+                <property name="owner" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="complianceRiskDc">
+                <column width="350px">
+                    <textField id="numberField" property="number"/>
+                    <pickerField id="departmentField" property="department">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="riskCategoryField" property="riskCategory">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textArea id="shortDescriptionField" property="shortDescription" rows="5"/>
+                    <textArea id="detailedDescriptionField" property="detailedDescription" rows="5"/>
+                    <pickerField id="sourceField" property="source">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="ratingField" property="rating">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="planEventField" property="planEvent">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <dateField id="detectionDateField" property="detectionDate"/>
+                    <dateField id="plannedCloseDateField" property="plannedCloseDate"/>
+                    <dateField id="extendedDateField" property="extendedDate"/>
+                    <dateField id="acceptedDateField" property="acceptedDate"/>
+                    <dateField id="finalAcceptedDateField" property="finalAcceptedDate"/>
+                    <dateField id="closedDateField" property="closedDate"/>
+                    <lookupField id="statusField" property="status"/>
+                    <pickerField id="ownerField" property="owner">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="initiatorField" property="initiator"/>
+                    <textField id="commentField" property="comment"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

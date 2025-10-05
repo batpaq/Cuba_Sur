@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://complaintAnalysisLogBrowse.caption"
+        focusComponent="complaintAnalysisLogsTable"
+        messagesPack="com.company.suraltyn.web.screens.complaintanalysislog">
+    <data readOnly="true">
+        <collection id="complaintAnalysisLogsDc"
+                    class="com.company.suraltyn.entity.ComplaintAnalysisLog">
+            <view extends="_local">
+                <property name="complaint" view="_minimal"/>
+                <property name="user" view="_minimal"/>
+            </view>
+            <loader id="complaintAnalysisLogsDl">
+                <query>
+                    <![CDATA[select e from ComplaintAnalysisLog e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="complaintAnalysisLogsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="complaintAnalysisLogsTable"
+                dataLoader="complaintAnalysisLogsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="complaintAnalysisLogsTable"
+                    width="100%"
+                    dataContainer="complaintAnalysisLogsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="complaint"/>
+                <column id="enabled"/>
+                <column id="user"/>
+                <column id="timestamp"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="complaintAnalysisLogsTable.create"/>
+                <button id="editBtn" action="complaintAnalysisLogsTable.edit"/>
+                <button id="removeBtn" action="complaintAnalysisLogsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

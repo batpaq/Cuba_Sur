@@ -1,0 +1,17 @@
+@mixin com_company_suraltyn-halo-ext {
+
+  // Скрываем кнопку для комбобоксов
+  .no-toggle .v-button {
+    display: none !important;
+  }
+
+  // Прозрачное поле
+  .transparent-bg {
+    background-color: transparent !important;
+    border: none !important;
+  }
+
+  .highlight-complaint {
+    background-color: rgba(255, 200, 200, 0.8);
+  }
+}

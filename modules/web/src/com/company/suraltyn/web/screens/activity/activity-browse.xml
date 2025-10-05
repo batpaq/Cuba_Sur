@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://activityBrowse.caption"
+        focusComponent="activitiesTable"
+        messagesPack="com.company.suraltyn.web.screens.activity">
+    <data readOnly="true">
+        <collection id="activitiesDc"
+                    class="com.company.suraltyn.entity.Activity">
+            <view extends="_local">
+                <property name="planEvent" view="_minimal"/>
+                <property name="department" view="_minimal"/>
+                <property name="files" view="_minimal"/>
+            </view>
+            <loader id="activitiesDl">
+                <query>
+                    <![CDATA[select e from suraltyn$Activity e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="activitiesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="activitiesTable"
+                dataLoader="activitiesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="activitiesTable"
+                    width="100%"
+                    dataContainer="activitiesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="planEvent"/>
+                <column id="name"/>
+                <column id="department"/>
+                <column id="responsibleEmployee"/>
+                <column id="deadline"/>
+                <column id="newDeadline"/>
+                <column id="status"/>
+                <column id="necessaryMeasures"/>
+                <column id="comments"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="activitiesTable.create"/>
+                <button id="editBtn" action="activitiesTable.edit"/>
+                <button id="removeBtn" action="activitiesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

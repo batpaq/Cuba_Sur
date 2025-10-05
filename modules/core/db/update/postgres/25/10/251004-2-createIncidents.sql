@@ -1,0 +1,9 @@
+alter table INCIDENTS add constraint FK_INCIDENTS_ON_HEAD foreign key (HEAD_ID) references SEC_USER(ID);
+alter table INCIDENTS add constraint FK_INCIDENTS_ON_EXECUTOR foreign key (EXECUTOR_ID) references SEC_USER(ID);
+alter table INCIDENTS add constraint FK_INCIDENTS_ON_SOURCE foreign key (SOURCE_ID) references SOURCE_DICTIONARY(ID);
+create index IDX_INCIDENTS_ON_HEAD on INCIDENTS (HEAD_ID);
+create index IDX_INCIDENTS_ON_EXECUTOR on INCIDENTS (EXECUTOR_ID);
+create index IDX_INCIDENTS_ON_SOURCE on INCIDENTS (SOURCE_ID);
+create index IDX_INCIDENTS_HEAD on INCIDENTS (head_id);
+create index IDX_INCIDENTS_SOURCE on INCIDENTS (SOURCE_ID);
+create index IDX_INCIDENTS_EXECUTOR on INCIDENTS (EXECUTOR_ID);

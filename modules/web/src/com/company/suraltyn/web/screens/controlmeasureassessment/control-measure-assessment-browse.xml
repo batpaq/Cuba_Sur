@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://controlMeasureAssessmentBrowse.caption"
+        focusComponent="controlMeasureAssessmentsTable"
+        messagesPack="com.company.suraltyn.web.screens.controlmeasureassessment">
+    <data readOnly="true">
+        <collection id="controlMeasureAssessmentsDc"
+                    class="com.company.suraltyn.entity.ControlMeasureAssessment">
+            <view extends="_local">
+                <property name="controlMeasureName" view="_minimal"/>
+                <property name="measurePlan" view="_minimal"/>
+                <property name="responsibleExecutor" view="_minimal"/>
+                <property name="selfAssessmentSVK" view="_minimal"/>
+            </view>
+            <loader id="controlMeasureAssessmentsDl">
+                <query>
+                    <![CDATA[select e from suraltyn$ControlMeasureAssessment e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="controlMeasureAssessmentsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="controlMeasureAssessmentsTable"
+                dataLoader="controlMeasureAssessmentsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="controlMeasureAssessmentsTable"
+                    width="100%"
+                    dataContainer="controlMeasureAssessmentsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="controlMeasureName"/>
+                <column id="necessityStatus"/>
+                <column id="comment"/>
+                <column id="measurePlan"/>
+                <column id="responsibleExecutor"/>
+                <column id="deadline"/>
+                <column id="selfAssessmentSVK"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="controlMeasureAssessmentsTable.create"/>
+                <button id="editBtn" action="controlMeasureAssessmentsTable.edit"/>
+                <button id="removeBtn" action="controlMeasureAssessmentsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

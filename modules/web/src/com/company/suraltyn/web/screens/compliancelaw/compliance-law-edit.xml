@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://complianceLawEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.compliancelaw">
+    <data>
+        <instance id="complianceLawDc"
+                  class="com.company.suraltyn.entity.ComplianceLaw">
+            <view extends="_local">
+                <property name="actList" view="_minimal"/>
+                <property name="vndList" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="actListDc" property="actList"/>
+            <collection id="vndListDc" property="vndList"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="complianceLawDc">
+            <column width="350px">
+                <textField id="numberField" property="number"/>
+                <textField id="nameField" property="name"/>
+                <textField id="initiatorField" property="initiator"/>
+                <textField id="commentField" property="comment"/>
+                <dateField id="dueDateField" property="dueDate"/>
+            </column>
+        </form>
+        <groupBox id="actListBox" caption="msg://com.company.suraltyn.entity/ComplianceLaw.actList">
+            <table id="actListTable" dataContainer="actListDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="evaluation"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="actListTable.create"/>
+                    <button action="actListTable.edit"/>
+                    <button action="actListTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="vndListBox" caption="msg://com.company.suraltyn.entity/ComplianceLaw.vndList">
+            <table id="vndListTable" dataContainer="vndListDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="vnd"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="vndListTable.create"/>
+                    <button action="vndListTable.edit"/>
+                    <button action="vndListTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

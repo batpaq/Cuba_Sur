@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://monitoringClientsMLTFRisksBrowse.caption"
+        focusComponent="monitoringClientsMLTFRisksesTable"
+        messagesPack="com.company.suraltyn.web.screens.monitoringclientsmltfrisks">
+    <data readOnly="true">
+        <collection id="monitoringClientsMLTFRisksesDc"
+                    class="com.company.suraltyn.entity.MonitoringClientsMLTFRisks">
+            <view extends="_local"/>
+            <loader id="monitoringClientsMLTFRisksesDl">
+                <query>
+                    <![CDATA[select e from suraltyn$MonitoringClientsMLTFRisks e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="monitoringClientsMLTFRisksesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="monitoringClientsMLTFRisksesTable"
+                dataLoader="monitoringClientsMLTFRisksesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="monitoringClientsMLTFRisksesTable"
+                    width="100%"
+                    dataContainer="monitoringClientsMLTFRisksesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="name"/>
+                <column id="initiator"/>
+                <column id="deadlineDate"/>
+                <column id="comment"/>
+                <column id="totalClients"/>
+                <column id="highRiskClientsCount"/>
+                <column id="ipdl"/>
+                <column id="highRiskActivityClientsCount"/>
+                <column id="prohibitedActivityClientsCount"/>
+                <column id="highCountryRiskClientsCount"/>
+                <column id="prohibitedCountryClientsCount"/>
+                <column id="sanctionListClientsCount"/>
+                <column id="totalClientsForUpdateCount"/>
+                <column id="updatedClientsCount"/>
+                <column id="notUpdatedClientsCount"/>
+                <column id="notUpdatedReason"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="monitoringClientsMLTFRisksesTable.create"/>
+                <button id="editBtn" action="monitoringClientsMLTFRisksesTable.edit"/>
+                <button id="removeBtn" action="monitoringClientsMLTFRisksesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

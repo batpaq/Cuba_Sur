@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://complaintEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.complaint">
+    <data>
+        <instance id="complaintDc"
+                  class="com.company.suraltyn.entity.Complaint">
+            <view extends="_local">
+                <property name="channel" view="_minimal"/>
+                <property name="applicantType" view="_minimal"/>
+                <property name="clientPh" view="_minimal"/>
+                <property name="reason" view="_minimal"/>
+                <property name="closedByLogin" view="_minimal"/>
+                <property name="employee" view="_minimal"/>
+                <property name="responseType" view="_minimal"/>
+                <property name="complaintReason" view="_minimal"/>
+                <property name="riskAssessment" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+
+    <dialogMode height="600" width="800"/>
+
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="complaintDc">
+                <column width="350px">
+                    <textField id="complaintSystemNumberField" property="complaintSystemNumber"/>
+                    <textField id="complaintNumberField" property="complaintNumber"/>
+                    <dateField id="receivedDateField" property="receivedDate"/>
+                    <dateField id="registrationDateField" property="registrationDate"/>
+                    <pickerField id="channelField" property="channel">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="applicantTypeField" property="applicantType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="clientPhField" property="clientPh">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="applicantLastNameField" property="applicantLastName"/>
+                    <textField id="applicantFirstNameField" property="applicantFirstName"/>
+                    <textField id="applicantIINField" property="applicantIIN"/>
+                    <pickerField id="reasonField" property="reason">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+
+                    <checkBox id="wordAnalysisField" property="wordAnalysisEnabled"/>
+
+                    <lookupField id="complaintSignField" property="complaintSign"/>
+                    <textArea id="descriptionField" property="description" rows="5"/>
+                    <textArea id="reasonForTheComplaintField" property="reasonForTheComplaint" rows="5"/>
+                    <pickerField id="closedByLoginField" property="closedByLogin">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="closedByUserField" property="closedByUser"/>
+                    <textArea id="commentField" property="comment" rows="5"/>
+                    <dateField id="closedDateField" property="closedDate"/>
+                    <pickerField id="employeeField" property="employee">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="responsibleDepartmentField" property="responsibleDepartment"/>
+                    <dateField id="dueDateField" property="dueDate"/>
+                    <pickerField id="responseTypeField" property="responseType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <lookupField id="statusField" property="status"/>
+                    <pickerField id="complaintReasonField" property="complaintReason">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="riskAssessmentField" property="riskAssessment">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textArea id="complaintCommentField" property="complaintComment" rows="5"/>
+                    <textField id="initiatorField" property="initiator"/>
+
+                    <button id="toggleAnalysisButton" caption="Переключить анализ"/>
+                </column>
+            </form>
+        </scrollBox>
+
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

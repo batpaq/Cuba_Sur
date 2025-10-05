@@ -1,0 +1,30 @@
+create table INCIDENTS (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NUMBER_ integer,
+    NAME varchar(255) not null,
+    INITIATOR varchar(255) not null,
+    AUTHORITY_NAME varchar(255) not null,
+    CHECK_NAME varchar(255) not null,
+    CHECK_DATE date,
+    VIOLATION_NAME varchar(255),
+    VIOLATION_COUNT integer,
+    HEAD_ID uuid,
+    EXECUTOR_ID uuid,
+    DEADLINE date,
+    MEASURES_COUNT integer not null,
+    PENALTIES_RESULT text not null,
+    PENALTY_SUM integer not null,
+    REIMBURSEMENT integer,
+    SOURCE_ID uuid not null,
+    COMMENT_ text,
+    --
+    primary key (ID)
+);

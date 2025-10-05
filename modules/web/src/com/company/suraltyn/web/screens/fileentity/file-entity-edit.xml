@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://fileEntityEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.fileentity">
+    <data>
+        <instance id="fileEntityDc"
+                  class="com.company.suraltyn.entity.FileEntity">
+            <view extends="_local">
+                <property name="fileDescriptor" view="_minimal"/>
+                <property name="incidents" view="_minimal"/>
+                <property name="planEvents" view="_minimal"/>
+                <property name="activities" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="incidentsDc" property="incidents"/>
+            <collection id="planEventsDc" property="planEvents"/>
+            <collection id="activitiesDc" property="activities"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="fileEntityDc">
+            <column width="350px">
+                <textField id="fileNameField" property="fileName"/>
+                <textField id="fileTypeField" property="fileType"/>
+                <textField id="fileSizeField" property="fileSize"/>
+                <upload id="fileDescriptorField" fileStoragePutMode="IMMEDIATE" property="fileDescriptor"
+                        showFileName="true"/>
+            </column>
+        </form>
+        <groupBox id="incidentsBox" caption="msg://com.company.suraltyn.entity/FileEntity.incidents">
+            <table id="incidentsTable" dataContainer="incidentsDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="incidentsTable.add"/>
+                    <button action="incidentsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="planEventsBox" caption="msg://com.company.suraltyn.entity/FileEntity.planEvents">
+            <table id="planEventsTable" dataContainer="planEventsDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="planEventsTable.add"/>
+                    <button action="planEventsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="activitiesBox" caption="msg://com.company.suraltyn.entity/FileEntity.activities">
+            <table id="activitiesTable" dataContainer="activitiesDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="activitiesTable.add"/>
+                    <button action="activitiesTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

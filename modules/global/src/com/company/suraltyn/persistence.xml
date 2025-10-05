@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="suraltyn" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.suraltyn.entity.Complaint</class>
+        <class>com.company.suraltyn.entity.ClientPh</class>
+        <class>com.company.suraltyn.entity.Channel</class>
+        <class>com.company.suraltyn.entity.ApplicantType</class>
+        <class>com.company.suraltyn.entity.Subject</class>
+        <class>com.company.suraltyn.entity.ResponseType</class>
+        <class>com.company.suraltyn.entity.ComplaintReason</class>
+        <class>com.company.suraltyn.entity.ComplianceRiskAssessment</class>
+        <class>com.company.suraltyn.entity.MonitoringClientsMLTFRisks</class>
+        <class>com.company.suraltyn.entity.Incidents</class>
+        <class>com.company.suraltyn.entity.Department</class>
+        <class>com.company.suraltyn.entity.SourceDictionary</class>
+        <class>com.company.suraltyn.entity.FileEntity</class>
+        <class>com.company.suraltyn.entity.PlanEvent</class>
+        <class>com.company.suraltyn.entity.Activity</class>
+        <class>com.company.suraltyn.entity.Training</class>
+        <class>com.company.suraltyn.entity.ProductService</class>
+        <class>com.company.suraltyn.entity.Type</class>
+        <class>com.company.suraltyn.entity.SelfAssessmentSVK</class>
+        <class>com.company.suraltyn.entity.RiskEvent</class>
+        <class>com.company.suraltyn.entity.InternalExternalFactorAssessment</class>
+        <class>com.company.suraltyn.entity.PolicyProcedureAssessment</class>
+        <class>com.company.suraltyn.entity.ControlMeasureAssessment</class>
+        <class>com.company.suraltyn.entity.ControlMeasures</class>
+        <class>com.company.suraltyn.entity.InternalControlMonitoring</class>
+        <class>com.company.suraltyn.entity.Period</class>
+        <class>com.company.suraltyn.entity.Rating</class>
+        <class>com.company.suraltyn.entity.ComplianceRisk</class>
+        <class>com.company.suraltyn.entity.RiskLevel</class>
+        <class>com.company.suraltyn.entity.RiskSource</class>
+        <class>com.company.suraltyn.entity.ComplianceLaw</class>
+        <class>com.company.suraltyn.entity.ComplianceLawAct</class>
+        <class>com.company.suraltyn.entity.Act</class>
+        <class>com.company.suraltyn.entity.ComplianceLawVnd</class>
+        <class>com.company.suraltyn.entity.Vnd</class>
+        <class>com.company.suraltyn.entity.CompliancePolicy</class>
+        <class>com.company.suraltyn.entity.CompliancePolicyRequirement</class>
+        <class>com.company.suraltyn.entity.ConflictOfInterest</class>
+        <class>com.company.suraltyn.entity.ComplaintAnalysisLog</class>
+        <class>com.company.suraltyn.entity.ComplaintWordSetting</class>
+    </persistence-unit>
+</persistence>

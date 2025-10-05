@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://sourceDictionaryBrowse.caption"
+        focusComponent="sourceDictionariesTable"
+        messagesPack="com.company.suraltyn.web.screens.sourcedictionary">
+    <data readOnly="true">
+        <collection id="sourceDictionariesDc"
+                    class="com.company.suraltyn.entity.SourceDictionary">
+            <view extends="_local"/>
+            <loader id="sourceDictionariesDl">
+                <query>
+                    <![CDATA[select e from suraltyn$SourceDictionary e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="sourceDictionariesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="sourceDictionariesTable"
+                dataLoader="sourceDictionariesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="sourceDictionariesTable"
+                    width="100%"
+                    dataContainer="sourceDictionariesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="sourceDictionariesTable.create"/>
+                <button id="editBtn" action="sourceDictionariesTable.edit"/>
+                <button id="removeBtn" action="sourceDictionariesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

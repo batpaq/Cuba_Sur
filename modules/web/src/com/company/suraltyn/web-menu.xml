@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+
+            <item screen="suraltyn$Department.browse" caption="msg://com.company.suraltyn.web.screens.department/departmentBrowse.caption"/>
+            <item screen="FileEntity.browse" caption="msg://com.company.suraltyn.web.screens.fileentity/fileEntityBrowse.caption"/>
+            <item screen="suraltyn$SourceDictionary.browse" caption="msg://com.company.suraltyn.web.screens.sourcedictionary/sourceDictionaryBrowse.caption"/>
+            <item screen="Type.browse" caption="msg://com.company.suraltyn.web.screens.type/typeBrowse.caption"/>
+            <item screen="suraltyn$Activity.browse" caption="msg://com.company.suraltyn.web.screens.activity/activityBrowse.caption"/>
+            <item screen="suraltyn$ControlMeasureAssessment.browse" caption="msg://com.company.suraltyn.web.screens.controlmeasureassessment/controlMeasureAssessmentBrowse.caption"/>
+            <item screen="InternalControlMonitoring.browse" caption="msg://com.company.suraltyn.web.screens.internalcontrolmonitoring/internalControlMonitoringBrowse.caption"/>
+            <item screen="InternalExternalFactorAssessment.browse" caption="msg://com.company.suraltyn.web.screens.internalexternalfactorassessment/internalExternalFactorAssessmentBrowse.caption"/>
+            <item screen="Period.browse" caption="msg://com.company.suraltyn.web.screens.period/periodBrowse.caption"/>
+            <item screen="suraltyn$PlanEvent.browse" caption="msg://com.company.suraltyn.web.screens.planevent/planEventBrowse.caption"/>
+            <item screen="PolicyProcedureAssessment.browse" caption="msg://com.company.suraltyn.web.screens.policyprocedureassessment/policyProcedureAssessmentBrowse.caption"/>
+            <item screen="RiskEvent.browse" caption="msg://com.company.suraltyn.web.screens.riskevent/riskEventBrowse.caption"/>
+            <item screen="RiskSource.browse" caption="msg://com.company.suraltyn.web.screens.risksource/riskSourceBrowse.caption"/>
+            <item screen="RiskLevel.browse" caption="msg://com.company.suraltyn.web.screens.risklevel/riskLevelBrowse.caption"/>
+            <item screen="Vnd.browse" caption="msg://com.company.suraltyn.web.screens.vnd/vndBrowse.caption"/>
+            <item screen="Act.browse" caption="msg://com.company.suraltyn.web.screens.act/actBrowse.caption"/>
+            <item screen="suraltyn$ComplianceLawVnd.browse" caption="msg://com.company.suraltyn.web.screens.compliancelawvnd/complianceLawVndBrowse.caption"/>
+            <item screen="suraltyn$ComplianceLawAct.browse" caption="msg://com.company.suraltyn.web.screens.compliancelawact/complianceLawActBrowse.caption"/>
+            <item screen="CompliancePolicyRequirement.browse" caption="msg://com.company.suraltyn.web.screens.compliancepolicyrequirement/compliancePolicyRequirementBrowse.caption"/>
+
+            <item screen="suraltyn$ClientPh.browse" caption="msg://com.company.suraltyn.web.screens.clientph/clientPhBrowse.caption"/>
+            <item screen="suraltyn$Subject.browse" caption="msg://com.company.suraltyn.web.screens.subject/subjectBrowse.caption"/>
+            <item screen="suraltyn$ComplaintReason.browse" caption="msg://com.company.suraltyn.web.screens.complaintreason/complaintReasonBrowse.caption"/>
+            <item screen="suraltyn$ComplianceRiskAssessment.browse" caption="msg://com.company.suraltyn.web.screens.complianceriskassessment/complianceRiskAssessmentBrowse.caption"/>
+            <item screen="suraltyn$ResponseType.browse" caption="msg://com.company.suraltyn.web.screens.responsetype/responseTypeBrowse.caption"/>
+            <item screen="suraltyn$Channel.browse" caption="msg://com.company.suraltyn.web.screens.channel/channelBrowse.caption"/>
+
+            <item screen="Rating.browse" caption="msg://com.company.suraltyn.web.screens.rating/ratingBrowse.caption"/>
+            <item screen="ControlMeasures.browse" caption="msg://com.company.suraltyn.web.screens.controlmeasures/controlMeasuresBrowse.caption"/>
+
+        <item screen="ComplaintWordSetting.browse" caption="msg://com.company.suraltyn.web.screens.complaintwordsetting/complaintWordSettingBrowse.caption"/>
+        <item screen="ComplaintAnalysisLog.browse" caption="msg://com.company.suraltyn.web.screens.complaintanalysislog/complaintAnalysisLogBrowse.caption"/>
+
+    <item screen="suraltyn_Complaint.browse" caption="msg://com.company.suraltyn.web.screens.complaint/complaintBrowse.caption"/>
+    <item screen="suraltyn$MonitoringClientsMLTFRisks.browse" caption="msg://com.company.suraltyn.web.screens.monitoringclientsmltfrisks/monitoringClientsMLTFRisksBrowse.caption"/>
+    <item screen="Training.browse" caption="msg://com.company.suraltyn.web.screens.training/trainingBrowse.caption"/>
+    <item screen="Incidents.browse" caption="msg://com.company.suraltyn.web.screens.incidents/incidentsBrowse.caption"/>
+    <item screen="suraltyn$ProductService.browse" caption="msg://com.company.suraltyn.web.screens.productservice/productServiceBrowse.caption"/>
+    <item screen="SelfAssessmentSVK.browse" caption="msg://com.company.suraltyn.web.screens.selfassessmentsvk/selfAssessmentSVKBrowse.caption"/>
+    <item screen="suraltyn$ComplianceRisk.browse" caption="msg://com.company.suraltyn.web.screens.compliancerisk/complianceRiskBrowse.caption"/>
+    <item screen="ComplianceLaw.browse" caption="msg://com.company.suraltyn.web.screens.compliancelaw/complianceLawBrowse.caption"/>
+    <item screen="suraltyn$CompliancePolicy.browse" caption="msg://com.company.suraltyn.web.screens.compliancepolicy/compliancePolicyBrowse.caption"/>
+    <item screen="ConflictOfInterest.browse" caption="msg://com.company.suraltyn.web.screens.conflictofinterest/conflictOfInterestBrowse.caption"/>
+
+</menu-config>

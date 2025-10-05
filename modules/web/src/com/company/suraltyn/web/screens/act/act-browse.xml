@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://actBrowse.caption"
+        focusComponent="actsTable"
+        messagesPack="com.company.suraltyn.web.screens.act">
+    <data readOnly="true">
+        <collection id="actsDc"
+                    class="com.company.suraltyn.entity.Act">
+            <view extends="_local"/>
+            <loader id="actsDl">
+                <query>
+                    <![CDATA[select e from Act e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="actsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="actsTable"
+                dataLoader="actsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="actsTable"
+                    width="100%"
+                    dataContainer="actsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="code"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="actsTable.create"/>
+                <button id="editBtn" action="actsTable.edit"/>
+                <button id="removeBtn" action="actsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

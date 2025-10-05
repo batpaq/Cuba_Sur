@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://complianceLawVndBrowse.caption"
+        focusComponent="complianceLawVndsTable"
+        messagesPack="com.company.suraltyn.web.screens.compliancelawvnd">
+    <data readOnly="true">
+        <collection id="complianceLawVndsDc"
+                    class="com.company.suraltyn.entity.ComplianceLawVnd">
+            <view extends="_local">
+                <property name="complianceLaw" view="_minimal"/>
+                <property name="vnd" view="_minimal"/>
+            </view>
+            <loader id="complianceLawVndsDl">
+                <query>
+                    <![CDATA[select e from suraltyn$ComplianceLawVnd e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="complianceLawVndsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="complianceLawVndsTable"
+                dataLoader="complianceLawVndsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="complianceLawVndsTable"
+                    width="100%"
+                    dataContainer="complianceLawVndsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="complianceLaw"/>
+                <column id="vnd"/>
+                <column id="vndMatchActs"/>
+                <column id="evaluation"/>
+                <column id="riskAssessment"/>
+                <column id="nonComplianceReason"/>
+                <column id="justification"/>
+                <column id="generalComment"/>
+                <column id="actionPlan"/>
+                <column id="dueDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="complianceLawVndsTable.create"/>
+                <button id="editBtn" action="complianceLawVndsTable.edit"/>
+                <button id="removeBtn" action="complianceLawVndsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,5 @@
+@import "halo-ext";
+
+@mixin com_company_suraltyn {
+  @include com_company_suraltyn-halo-ext;
+}

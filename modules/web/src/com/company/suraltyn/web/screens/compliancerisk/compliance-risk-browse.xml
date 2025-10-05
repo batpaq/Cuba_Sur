@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://complianceRiskBrowse.caption"
+        focusComponent="complianceRisksTable"
+        messagesPack="com.company.suraltyn.web.screens.compliancerisk">
+    <data readOnly="true">
+        <collection id="complianceRisksDc"
+                    class="com.company.suraltyn.entity.ComplianceRisk">
+            <view extends="_local">
+                <property name="department" view="_minimal"/>
+                <property name="riskCategory" view="_minimal"/>
+                <property name="source" view="_minimal"/>
+                <property name="rating" view="_minimal"/>
+                <property name="planEvent" view="_minimal"/>
+                <property name="owner" view="_minimal"/>
+            </view>
+            <loader id="complianceRisksDl">
+                <query>
+                    <![CDATA[select e from suraltyn$ComplianceRisk e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="complianceRisksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="complianceRisksTable"
+                dataLoader="complianceRisksDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="complianceRisksTable"
+                    width="100%"
+                    dataContainer="complianceRisksDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="department"/>
+                <column id="riskCategory"/>
+                <column id="shortDescription"/>
+                <column id="detailedDescription"/>
+                <column id="source"/>
+                <column id="rating"/>
+                <column id="planEvent"/>
+                <column id="detectionDate"/>
+                <column id="plannedCloseDate"/>
+                <column id="extendedDate"/>
+                <column id="acceptedDate"/>
+                <column id="finalAcceptedDate"/>
+                <column id="closedDate"/>
+                <column id="status"/>
+                <column id="owner"/>
+                <column id="initiator"/>
+                <column id="comment"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="complianceRisksTable.create"/>
+                <button id="editBtn" action="complianceRisksTable.edit"/>
+                <button id="removeBtn" action="complianceRisksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://planEventBrowse.caption"
+        focusComponent="planEventsTable"
+        messagesPack="com.company.suraltyn.web.screens.planevent">
+    <data readOnly="true">
+        <collection id="planEventsDc"
+                    class="com.company.suraltyn.entity.PlanEvent">
+            <view extends="_local">
+                <property name="activities" view="_minimal"/>
+                <property name="files" view="_minimal"/>
+            </view>
+            <loader id="planEventsDl">
+                <query>
+                    <![CDATA[select e from suraltyn$PlanEvent e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="planEventsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="planEventsTable"
+                dataLoader="planEventsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="planEventsTable"
+                    width="100%"
+                    dataContainer="planEventsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="numberPm"/>
+                <column id="name"/>
+                <column id="creationDate"/>
+                <column id="status"/>
+                <column id="entityName"/>
+                <column id="deadline"/>
+                <column id="newDeadline"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="planEventsTable.create"/>
+                <button id="editBtn" action="planEventsTable.edit"/>
+                <button id="removeBtn" action="planEventsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

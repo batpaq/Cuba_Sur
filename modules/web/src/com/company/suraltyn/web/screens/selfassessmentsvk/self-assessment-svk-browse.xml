@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://selfAssessmentSVKBrowse.caption"
+        focusComponent="selfAssessmentSVKsTable"
+        messagesPack="com.company.suraltyn.web.screens.selfassessmentsvk">
+    <data readOnly="true">
+        <collection id="selfAssessmentSVKsDc"
+                    class="com.company.suraltyn.entity.SelfAssessmentSVK">
+            <view extends="_local">
+                <property name="department" view="_minimal"/>
+                <property name="period" view="_minimal"/>
+                <property name="quarter" view="_minimal"/>
+                <property name="previousRating" view="_minimal"/>
+                <property name="currentRating" view="_minimal"/>
+                <property name="forecastRating" view="_minimal"/>
+                <property name="riskEvents" view="_minimal"/>
+                <property name="internalExternalFactors" view="_minimal"/>
+                <property name="policyProcedureAssessment" view="_minimal"/>
+                <property name="controlMeasureAssessment" view="_minimal"/>
+                <property name="internalControlMonitoring" view="_minimal"/>
+            </view>
+            <loader id="selfAssessmentSVKsDl">
+                <query>
+                    <![CDATA[select e from SelfAssessmentSVK e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="selfAssessmentSVKsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="selfAssessmentSVKsTable"
+                dataLoader="selfAssessmentSVKsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="selfAssessmentSVKsTable"
+                    width="100%"
+                    dataContainer="selfAssessmentSVKsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="department"/>
+                <column id="period"/>
+                <column id="descriptionChanges"/>
+                <column id="quarter"/>
+                <column id="previousRating"/>
+                <column id="currentRating"/>
+                <column id="forecastRating"/>
+                <column id="assessmentJustification"/>
+                <column id="influenceFactors"/>
+                <column id="emergingRisks"/>
+                <column id="management"/>
+                <column id="internalController"/>
+                <column id="fillDate"/>
+                <column id="commentDK"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="selfAssessmentSVKsTable.create"/>
+                <button id="editBtn" action="selfAssessmentSVKsTable.edit"/>
+                <button id="removeBtn" action="selfAssessmentSVKsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

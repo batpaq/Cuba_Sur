@@ -1,0 +1,2 @@
+alter table INCIDENT_DEPARTMENTS add constraint FK_INCDEP_ON_INCIDENTS foreign key (INCIDENTS_ID) references INCIDENTS(ID);
+alter table INCIDENT_DEPARTMENTS add constraint FK_INCDEP_ON_DEPARTMENT foreign key (DEPARTMENT_ID) references DEPARTMENT(ID);

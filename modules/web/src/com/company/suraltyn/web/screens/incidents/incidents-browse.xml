@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://incidentsBrowse.caption"
+        focusComponent="incidentsTable"
+        messagesPack="com.company.suraltyn.web.screens.incidents">
+
+    <data readOnly="true">
+        <collection id="incidentsDc"
+                    class="com.company.suraltyn.entity.Incidents">
+            <view extends="_local">
+                <property name="responsibleDepartments" view="_minimal"/>
+                <property name="departmentHead" view="_minimal"/>
+                <property name="executor" view="_minimal"/>
+                <property name="source" view="_minimal"/>
+                <property name="files" view="_minimal"/>
+            </view>
+            <loader id="incidentsDl">
+                <query>
+                    <![CDATA[select e from suraltyn$Incidents e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <dialogMode height="600" width="800"/>
+
+    <layout expand="incidentsTable" spacing="true">
+
+        <filter id="filter"
+                applyTo="incidentsTable"
+                dataLoader="incidentsDl">
+            <properties include=".*"/>
+        </filter>
+
+        <groupTable id="incidentsTable"
+                    width="100%"
+                    dataContainer="incidentsDc"
+                    editable="false">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+            </actions>
+
+            <columns>
+                <column id="number"/>
+                <column id="name"/>
+                <column id="initiator"/>
+                <column id="authorityName"/>
+                <column id="checkName"/>
+                <column id="checkDate"/>
+                <column id="violationName"/>
+                <column id="violationCount"/>
+                <column id="departmentHead"/>
+                <column id="executor"/>
+                <column id="deadline"/>
+                <column id="measuresCount"/>
+                <column id="penaltiesResult"/>
+                <column id="penaltySum"/>
+                <column id="reimbursement"/>
+                <column id="source"/>
+                <column id="comment"/>
+            </columns>
+
+            <rowsCount/>
+
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="incidentsTable.create"/>
+                <button id="editBtn" action="incidentsTable.edit"/>
+                <button id="removeBtn" action="incidentsTable.remove"/>
+                <button id="refreshBtn" action="incidentsTable.refresh"/>
+            </buttonsPanel>
+        </groupTable>
+
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

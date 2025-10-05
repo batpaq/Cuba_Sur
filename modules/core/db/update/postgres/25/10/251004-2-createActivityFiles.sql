@@ -1,0 +1,2 @@
+alter table ACTIVITY_FILES add constraint FK_ACTFIL_ON_FILE_ENTITY foreign key (FILE_ENTITY_ID) references FILE_ENTITY(ID);
+alter table ACTIVITY_FILES add constraint FK_ACTFIL_ON_ACTIVITY foreign key (ACTIVITY_ID) references ACTIVITY(ID);

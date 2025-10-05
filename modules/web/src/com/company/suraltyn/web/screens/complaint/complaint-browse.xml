@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://complaintBrowse.caption"
+        focusComponent="complaintsTable"
+        messagesPack="com.company.suraltyn.web.screens.complaint">
+
+    <data readOnly="true">
+        <collection id="complaintsDc"
+                    class="com.company.suraltyn.entity.Complaint">
+            <view extends="_local">
+                <property name="channel" view="_minimal"/>
+                <property name="applicantType" view="_minimal"/>
+                <property name="clientPh" view="_minimal"/>
+                <property name="reason" view="_minimal"/>
+                <property name="closedByLogin" view="_minimal"/>
+                <property name="employee" view="_minimal"/>
+                <property name="responseType" view="_minimal"/>
+                <property name="complaintReason" view="_minimal"/>
+                <property name="riskAssessment" view="_minimal"/>
+            </view>
+            <loader id="complaintsDl">
+                <query>
+                    <![CDATA[select e from suraltyn$Complaint e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <dialogMode height="600" width="800"/>
+
+    <layout expand="complaintsTable" spacing="true">
+
+        <filter id="filter"
+                applyTo="complaintsTable"
+                dataLoader="complaintsDl">
+            <properties include=".*"/>
+        </filter>
+
+        <groupTable id="complaintsTable"
+                    width="100%"
+                    dataContainer="complaintsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="complaintSystemNumber"/>
+                <column id="complaintNumber"/>
+                <column id="receivedDate"/>
+                <column id="registrationDate"/>
+                <column id="channel"/>
+                <column id="applicantType"/>
+                <column id="clientPh"/>
+                <column id="applicantLastName"/>
+                <column id="applicantFirstName"/>
+                <column id="applicantIIN"/>
+                <column id="reason"/>
+                <column id="wordAnalysisEnabled"/>
+                <column id="complaintSign"/>
+                <column id="description"/>
+                <column id="reasonForTheComplaint"/>
+                <column id="closedByLogin"/>
+                <column id="closedByUser"/>
+                <column id="comment"/>
+                <column id="closedDate"/>
+                <column id="employee"/>
+                <column id="responsibleDepartment"/>
+                <column id="dueDate"/>
+                <column id="responseType"/>
+                <column id="status"/>
+                <column id="complaintReason"/>
+                <column id="riskAssessment"/>
+                <column id="complaintComment"/>
+                <column id="initiator"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="complaintsTable.create"/>
+                <button id="editBtn" action="complaintsTable.edit"/>
+                <button id="removeBtn" action="complaintsTable.remove"/>
+                <button id="toggleAnalysisButton" caption="Анализ слов"/>
+            </buttonsPanel>
+        </groupTable>
+
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+
+    </layout>
+</window>

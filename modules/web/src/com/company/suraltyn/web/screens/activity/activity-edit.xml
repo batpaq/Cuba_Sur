@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://activityEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.suraltyn.web.screens.activity">
+    <data>
+        <instance id="activityDc"
+                  class="com.company.suraltyn.entity.Activity">
+            <view extends="_local">
+                <property name="planEvent" view="_minimal"/>
+                <property name="department" view="_minimal"/>
+                <property name="files" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="filesDc" property="files"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="activityDc">
+            <column width="350px">
+                <pickerField id="planEventField" property="planEvent">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="nameField" property="name"/>
+                <pickerField id="departmentField" property="department">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="responsibleEmployeeField" property="responsibleEmployee"/>
+                <dateField id="deadlineField" property="deadline"/>
+                <dateField id="newDeadlineField" property="newDeadline"/>
+                <textField id="statusField" property="status"/>
+                <textArea id="necessaryMeasuresField" property="necessaryMeasures" rows="5"/>
+                <textArea id="commentsField" property="comments" rows="5"/>
+            </column>
+        </form>
+        <groupBox id="filesBox" caption="msg://com.company.suraltyn.entity/Activity.files">
+            <table id="filesTable" dataContainer="filesDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="fileName"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="filesTable.add"/>
+                    <button action="filesTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
