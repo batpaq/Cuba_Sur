@@ -8,7 +8,7 @@ import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
 
-@UiController("Incidents.browse")
+@UiController("suraltyn$Incidents.browse")
 @UiDescriptor("incidents-browse.xml")
 @LookupComponent("incidentsTable")
 @LoadDataBeforeShow

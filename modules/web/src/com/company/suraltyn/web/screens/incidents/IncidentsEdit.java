@@ -1,6 +1,5 @@
 package com.company.suraltyn.web.screens.incidents;
 
-import com.company.suraltyn.entity.FileEntity;
 import com.company.suraltyn.entity.Incidents;
 import com.haulmont.cuba.core.app.FileStorageService;
 import com.haulmont.cuba.core.entity.FileDescriptor;
@@ -9,13 +8,16 @@ import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.DataGrid;
 import com.haulmont.cuba.gui.components.FileUploadField;
+import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.screen.*;
 import com.haulmont.cuba.security.global.UserSession;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @UiController("suraltyn$Incidents.edit")
@@ -28,19 +30,16 @@ public class IncidentsEdit extends StandardEditor<Incidents> {
 
     @Inject
     private DataManager dataManager;
-
     @Inject
     private Notifications notifications;
-
     @Inject
     private FileStorageService fileStorageService;
-
     @Inject
     private FileUploadField fileUploadField;
-
     @Inject
-    private DataGrid<FileEntity> filesDataGrid;
-
+    private DataGrid<FileDescriptor> filesDataGrid;
+    @Inject
+    private CollectionPropertyContainer<FileDescriptor> filesDc;
     @Inject
     private UserSession userSession;
 
@@ -61,7 +60,7 @@ public class IncidentsEdit extends StandardEditor<Incidents> {
             }
 
             Long fileSize = fileDescriptor.getSize();
-            int maxFileSizeBytes = 10 * 1024 * 1024;
+            int maxFileSizeBytes = 10 * 1024 * 1024; // 10 MB
 
             if (fileSize != null && fileSize == 0) {
                 notifications.create().withCaption("Файл пустой. Загрузка отменена").show();
@@ -77,7 +76,14 @@ public class IncidentsEdit extends StandardEditor<Incidents> {
                 return;
             }
 
+            byte[] content = IOUtils.toByteArray(Objects.requireNonNull(fileUploadField.getFileContent()));
+
+            fileStorageService.saveFile(fileDescriptor, content);
+            fileDescriptor = dataManager.commit(fileDescriptor);
+
             attachFileToIncident(fileDescriptor);
+
+            filesDc.getMutableItems().add(fileDescriptor);
 
             log.info("Файл '{}' загружен: {} байт", fileDescriptor.getName(), fileDescriptor.getSize());
 
@@ -96,26 +102,29 @@ public class IncidentsEdit extends StandardEditor<Incidents> {
 
     @Subscribe("removeFileBtn")
     public void onRemoveFileBtnClick(Button.ClickEvent event) {
-        Set<FileEntity> selectedFiles = filesDataGrid.getSelected();
+        Set<FileDescriptor> selectedFiles = filesDataGrid.getSelected();
 
         if (selectedFiles.isEmpty()) {
             notifications.create().withCaption("Выберите файл(ы) для удаления").show();
             return;
         }
 
-        for (FileEntity file : selectedFiles) {
+        for (FileDescriptor fileDescriptor : selectedFiles) {
             try {
-                if (file.getFileDescriptor() != null) {
-                    fileStorageService.removeFile(file.getFileDescriptor());
-                    getEditedEntity().getFiles().remove(file.getFileDescriptor());
-                }
-                dataManager.remove(file);
+                fileStorageService.removeFile(fileDescriptor);
 
-                log.info("Файл '{}' успешно удалён", file.getFileName());
+                Incidents incident = getEditedEntity();
+                if (incident.getFiles() != null) {
+                    incident.getFiles().remove(fileDescriptor);
+                }
+
+                filesDc.getMutableItems().remove(fileDescriptor);
+
+                log.info("Файл '{}' успешно удалён", fileDescriptor.getName());
             } catch (Exception e) {
-                log.error("Ошибка при удалении файла {}", file.getFileName(), e);
+                log.error("Ошибка при удалении файла {}", fileDescriptor.getName(), e);
                 notifications.create()
-                        .withCaption("Ошибка при удалении файла: " + file.getFileName())
+                        .withCaption("Ошибка при удалении файла: " + fileDescriptor.getName())
                         .show();
             }
         }

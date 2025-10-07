@@ -240,23 +240,6 @@ create table PRODUCT_SERVICE (
     primary key (ID)
 )^
 -- end PRODUCT_SERVICE
--- begin COMPLIANCE_RISK_ASSESSMENT
-create table COMPLIANCE_RISK_ASSESSMENT (
-    ID uuid,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    CODE integer,
-    NAME varchar(5000),
-    --
-    primary key (ID)
-)^
--- end COMPLIANCE_RISK_ASSESSMENT
 -- begin RATING
 create table RATING (
     ID uuid,
@@ -274,6 +257,23 @@ create table RATING (
     primary key (ID)
 )^
 -- end RATING
+-- begin COMPLIANCE_RISK_ASSESSMENT
+create table COMPLIANCE_RISK_ASSESSMENT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    CODE integer,
+    NAME varchar(5000),
+    --
+    primary key (ID)
+)^
+-- end COMPLIANCE_RISK_ASSESSMENT
 -- begin ACTIVITY
 create table ACTIVITY (
     ID uuid,
@@ -583,22 +583,6 @@ create table COMPLIANCE_POLICY (
     primary key (ID)
 )^
 -- end COMPLIANCE_POLICY
--- begin APPLICANT_TYPE
-create table APPLICANT_TYPE (
-    ID uuid,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    NAME varchar(255),
-    --
-    primary key (ID)
-)^
--- end APPLICANT_TYPE
 -- begin VND
 create table VND (
     ID uuid,
@@ -616,6 +600,39 @@ create table VND (
     primary key (ID)
 )^
 -- end VND
+-- begin APPLICANT_TYPE
+create table APPLICANT_TYPE (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    --
+    primary key (ID)
+)^
+-- end APPLICANT_TYPE
+-- begin RISK_LEVEL
+create table RISK_LEVEL (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    CODE integer,
+    --
+    primary key (ID)
+)^
+-- end RISK_LEVEL
 -- begin CHANNEL
 create table CHANNEL (
     ID uuid,
@@ -658,23 +675,6 @@ create table TRAINING (
     primary key (ID)
 )^
 -- end TRAINING
--- begin RISK_LEVEL
-create table RISK_LEVEL (
-    ID uuid,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    NAME varchar(255),
-    CODE integer,
-    --
-    primary key (ID)
-)^
--- end RISK_LEVEL
 -- begin INTERNAL_EXTERNAL_FACTOR_ASSESSMENT
 create table INTERNAL_EXTERNAL_FACTOR_ASSESSMENT (
     ID uuid,
@@ -847,8 +847,8 @@ create table ACTIVITY_FILES (
 -- begin INCIDENT_FILES
 create table INCIDENT_FILES (
     INCIDENTS_ID uuid,
-    FILE_ENTITY_ID uuid,
-    primary key (INCIDENTS_ID, FILE_ENTITY_ID)
+    FILE_DESCRIPTOR_ID uuid,
+    primary key (INCIDENTS_ID, FILE_DESCRIPTOR_ID)
 )^
 -- end INCIDENT_FILES
 -- begin ACTIVITY_FILE_LINK

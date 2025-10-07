@@ -17,8 +17,8 @@ import java.time.LocalDate;
 public class Training extends StandardEntity {
     private static final long serialVersionUID = -293803969659378588L;
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "numberGenerator")
-    @SequenceGenerator(name = "numberGenerator", sequenceName = "number_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trainingGenerator")
+    @SequenceGenerator(name = "trainingGenerator", sequenceName = "number_seq", allocationSize = 1)
     @Column(name = "NUMBER_")
     private Integer number;
 

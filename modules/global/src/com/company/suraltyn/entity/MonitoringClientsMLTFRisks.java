@@ -15,8 +15,8 @@ import java.time.LocalDate;
 public class MonitoringClientsMLTFRisks extends StandardEntity {
     private static final long serialVersionUID = -1234567890123456794L;
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "numberGenerator")
-    @SequenceGenerator(name = "numberGenerator", sequenceName = "numberer_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "monitoringClientsMLTFRisksGenerator")
+    @SequenceGenerator(name = "monitoringClientsMLTFRisksGenerator", sequenceName = "numberer_seq", allocationSize = 1)
     @Column(name = "NUMBER_")
     private Integer number;
 

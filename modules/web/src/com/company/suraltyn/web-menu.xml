@@ -37,7 +37,7 @@
     <item screen="suraltyn_Complaint.browse" caption="msg://com.company.suraltyn.web.screens.complaint/complaintBrowse.caption"/>
     <item screen="suraltyn$MonitoringClientsMLTFRisks.browse" caption="msg://com.company.suraltyn.web.screens.monitoringclientsmltfrisks/monitoringClientsMLTFRisksBrowse.caption"/>
     <item screen="Training.browse" caption="msg://com.company.suraltyn.web.screens.training/trainingBrowse.caption"/>
-    <item screen="Incidents.browse" caption="msg://com.company.suraltyn.web.screens.incidents/incidentsBrowse.caption"/>
+    <item screen="suraltyn$Incidents.browse" caption="msg://com.company.suraltyn.web.screens.incidents/incidentsBrowse.caption"/>
     <item screen="suraltyn$ProductService.browse" caption="msg://com.company.suraltyn.web.screens.productservice/productServiceBrowse.caption"/>
     <item screen="SelfAssessmentSVK.browse" caption="msg://com.company.suraltyn.web.screens.selfassessmentsvk/selfAssessmentSVKBrowse.caption"/>
     <item screen="suraltyn$ComplianceRisk.browse" caption="msg://com.company.suraltyn.web.screens.compliancerisk/complianceRiskBrowse.caption"/>

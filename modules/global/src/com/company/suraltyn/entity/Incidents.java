@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @NamePattern("%s|name")
 @Table(name = "INCIDENTS", indexes = {
-        @Index(name = "IDX_INCIDENTS_HEAD", columnList = "head_id"),
+        @Index(name = "IDX_INCIDENTS_HEAD", columnList = "HEAD_ID"),
         @Index(name = "IDX_INCIDENTS_EXECUTOR", columnList = "EXECUTOR_ID"),
         @Index(name = "IDX_INCIDENTS_SOURCE", columnList = "SOURCE_ID")
 })
@@ -58,7 +58,7 @@ public class Incidents extends StandardEntity {
             joinColumns = @JoinColumn(name = "INCIDENTS_ID"),
             inverseJoinColumns = @JoinColumn(name = "DEPARTMENT_ID"))
     @ManyToMany
-    private Set<Department> responsibleDepartments;
+    private Set<Department> responsibleDepartments = new HashSet<>();
 
     @JoinColumn(name = "HEAD_ID")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -88,7 +88,7 @@ public class Incidents extends StandardEntity {
     private Integer reimbursement;
 
     @NotNull
-    @JoinColumn(name = "SOURCE_ID")
+    @JoinColumn(name = "SOURCE_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private SourceDictionary source;
 
@@ -99,10 +99,9 @@ public class Incidents extends StandardEntity {
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @JoinTable(name = "INCIDENT_FILES",
             joinColumns = @JoinColumn(name = "INCIDENTS_ID"),
-            inverseJoinColumns = @JoinColumn(name = "FILE_ENTITY_ID"))
+            inverseJoinColumns = @JoinColumn(name = "FILE_DESCRIPTOR_ID"))
     @ManyToMany
     private Set<FileDescriptor> files = new HashSet<>();
-
 
     @Transient
     public String getFileNames() {
@@ -113,7 +112,6 @@ public class Incidents extends StandardEntity {
                 .map(FileDescriptor::getName)
                 .collect(Collectors.joining(", "));
     }
-
 
     public Integer getNumber() {
         return number;

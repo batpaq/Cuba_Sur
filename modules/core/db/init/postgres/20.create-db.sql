@@ -124,7 +124,7 @@ alter table INCIDENTS add constraint FK_INCIDENTS_ON_SOURCE foreign key (SOURCE_
 create index IDX_INCIDENTS_ON_HEAD on INCIDENTS (HEAD_ID)^
 create index IDX_INCIDENTS_ON_EXECUTOR on INCIDENTS (EXECUTOR_ID)^
 create index IDX_INCIDENTS_ON_SOURCE on INCIDENTS (SOURCE_ID)^
-create index IDX_INCIDENTS_HEAD on INCIDENTS (head_id)^
+create index IDX_INCIDENTS_HEAD on INCIDENTS (HEAD_ID)^
 create index IDX_INCIDENTS_SOURCE on INCIDENTS (SOURCE_ID)^
 create index IDX_INCIDENTS_EXECUTOR on INCIDENTS (EXECUTOR_ID)^
 -- end INCIDENTS
@@ -233,7 +233,7 @@ alter table ACTIVITY_FILES add constraint FK_ACTFIL_ON_ACTIVITY foreign key (ACT
 -- end ACTIVITY_FILES
 -- begin INCIDENT_FILES
 alter table INCIDENT_FILES add constraint FK_INCFIL_ON_INCIDENTS foreign key (INCIDENTS_ID) references INCIDENTS(ID)^
-alter table INCIDENT_FILES add constraint FK_INCFIL_ON_FILE_DESCRIPTOR foreign key (FILE_ENTITY_ID) references SYS_FILE(ID)^
+alter table INCIDENT_FILES add constraint FK_INCFIL_ON_FILE_DESCRIPTOR foreign key (FILE_DESCRIPTOR_ID) references SYS_FILE(ID)^
 -- end INCIDENT_FILES
 -- begin ACTIVITY_FILE_LINK
 alter table ACTIVITY_FILE_LINK add constraint FK_ACTFIL_ON_ACTIVITY foreign key (ACTIVITY_ID) references ACTIVITY(ID)^

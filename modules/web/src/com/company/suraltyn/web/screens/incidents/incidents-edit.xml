@@ -5,29 +5,18 @@
         messagesPack="com.company.suraltyn.web.screens.incidents">
 
     <data>
+        <!-- Основной контейнер для инцидента -->
         <instance id="incidentsDc"
                   class="com.company.suraltyn.entity.Incidents">
             <view extends="_local">
                 <property name="departmentHead" view="_minimal"/>
                 <property name="executor" view="_minimal"/>
                 <property name="source" view="_minimal"/>
-                <property name="files" view="_minimal"/>
+                <property name="files" view="_local"/>
             </view>
+
+            <collection id="filesDc" property="files"/>
         </instance>
-a
-        <collection id="filesDc"
-                    class="com.company.suraltyn.entity.FileEntity">
-            <loader>
-                <query>
-                    <![CDATA[
-                        select f
-                        from suraltyn$Incidents i
-                        join i.files f
-                        where i = :container.incidentsDc
-                    ]]>
-                </query>
-            </loader>
-        </collection>
     </data>
 
     <layout spacing="true" expand="scrollBox">
@@ -75,16 +64,17 @@ a
                 </column>
             </form>
 
+            <!-- Блок с файлами -->
             <groupBox id="filesBox"
                       caption="msg://com.company.suraltyn.entity/Incidents.files"
                       width="100%">
                 <vbox spacing="true">
                     <hbox spacing="true" align="MIDDLE_LEFT">
-                        <fileUploadField id="fileUploadField"
-                                         accept="*/*"
-                                         width="300px"
-                                         uploadButtonCaption="Загрузить файл"
-                                         clearButtonCaption="Очистить"/>
+                        <upload id="fileUploadField"
+                                accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png,.zip,.rar,.txt"
+                                width="300px"
+                                uploadButtonCaption="Загрузить файл"
+                                clearButtonCaption="Очистить"/>
                         <button id="removeFileBtn"
                                 caption="Удалить выбранные файлы"/>
                     </hbox>
@@ -94,15 +84,11 @@ a
                               width="100%"
                               height="200px"
                               selectionMode="MULTI">
-                        <actions>
-                            <action id="removeFiles" type="remove"/>
-                        </actions>
-
                         <columns>
-                            <column id="fileName" caption="Имя файла" property="fileName"/>
-                            <column id="fileType" caption="Тип" property="fileType"/>
-                            <column id="fileSize" caption="Размер" property="fileSize"/>
-                            <column id="createDate" caption="Дата создания" property="fileDescriptor.createDate"/>
+                            <column id="fileName" caption="Имя файла"/>
+                            <column id="fileType" caption="Тип"/>
+                            <column id="fileSize" caption="Размер"/>
+                            <column id="createDate" caption="Дата создания"/>
                         </columns>
                     </dataGrid>
                 </vbox>
