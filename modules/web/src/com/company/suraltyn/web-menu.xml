@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
 
-            <item screen="suraltyn$Department.browse" caption="msg://com.company.suraltyn.web.screens.department/departmentBrowse.caption"/>
+    <menu id="Application" caption="Application">
+    <item screen="suraltyn$Department.browse" caption="msg://com.company.suraltyn.web.screens.department/departmentBrowse.caption"/>
             <item screen="FileEntity.browse" caption="msg://com.company.suraltyn.web.screens.fileentity/fileEntityBrowse.caption"/>
             <item screen="suraltyn$SourceDictionary.browse" caption="msg://com.company.suraltyn.web.screens.sourcedictionary/sourceDictionaryBrowse.caption"/>
             <item screen="Type.browse" caption="msg://com.company.suraltyn.web.screens.type/typeBrowse.caption"/>
@@ -44,5 +45,7 @@
     <item screen="ComplianceLaw.browse" caption="msg://com.company.suraltyn.web.screens.compliancelaw/complianceLawBrowse.caption"/>
     <item screen="suraltyn$CompliancePolicy.browse" caption="msg://com.company.suraltyn.web.screens.compliancepolicy/compliancePolicyBrowse.caption"/>
     <item screen="ConflictOfInterest.browse" caption="msg://com.company.suraltyn.web.screens.conflictofinterest/conflictOfInterestBrowse.caption"/>
+
+    </menu>
 
 </menu-config>
